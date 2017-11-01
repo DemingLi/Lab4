@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
         //注册EventBus
         EventBus.getDefault().register(this);
+        //注册动态广播
         IntentFilter Dynamicfilter = new IntentFilter();
         Dynamicfilter.addAction(DYNAMICACTION);
         registerReceiver(dynamicBroadcastReceiver, Dynamicfilter);
@@ -210,8 +211,8 @@ public class MainActivity extends AppCompatActivity {
             if(extras.getString("add_in_shoplist").equals("yes")) {
                 mRcyclerView.setVisibility(View.INVISIBLE);
                 shopListView.setVisibility(View.VISIBLE);
-                secondView.setVisibility(View.VISIBLE);
                 change.setImageResource(R.drawable.mainpage);
+                secondView.setVisibility(View.VISIBLE);
             }
         }
         setIntent(intent);
@@ -227,7 +228,6 @@ public class MainActivity extends AppCompatActivity {
             shopDatas.add(new ShoppingItem(name, price, Info));
             shopAdapter.notifyDataSetChanged();
         }
-        
     }
     
     @Override
